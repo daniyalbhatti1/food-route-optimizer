@@ -2,22 +2,6 @@
 
 A Next.js application for restaurant delivery route optimization using Mapbox and Supabase.
 
-## 🔒 Security Notice
-
-**IMPORTANT:** This repository contains sensitive API keys and database credentials. Follow these security practices:
-
-### ✅ What's Safe to Commit:
-- Source code
-- Configuration files (except `.env.local`)
-- Documentation
-- Database schema
-
-### ❌ What's NEVER Committed:
-- `.env.local` file (contains API keys)
-- Database credentials
-- Mapbox tokens
-- Supabase service keys
-
 ## 🚀 Quick Start
 
 ### 1. Clone the Repository
