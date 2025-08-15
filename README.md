@@ -1,36 +1,142 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Food Route Optimizer 🍕🚚
 
-## Getting Started
+A Next.js application for restaurant delivery route optimization using Mapbox and Supabase.
 
-First, run the development server:
+## 🔒 Security Notice
 
+**IMPORTANT:** This repository contains sensitive API keys and database credentials. Follow these security practices:
+
+### ✅ What's Safe to Commit:
+- Source code
+- Configuration files (except `.env.local`)
+- Documentation
+- Database schema
+
+### ❌ What's NEVER Committed:
+- `.env.local` file (contains API keys)
+- Database credentials
+- Mapbox tokens
+- Supabase service keys
+
+## 🚀 Quick Start
+
+### 1. Clone the Repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <your-repo-url>
+cd food-route-optimizer
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Set Up Environment Variables
+Create a `.env.local` file in the root directory:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+# Copy the example file
+cp env.example .env.local
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Edit with your actual values
+nano .env.local
+```
 
-## Learn More
+**Required Environment Variables:**
+```ini
+# Mapbox (Public token only - pk.* not sk.*)
+NEXT_PUBLIC_MAPBOX_TOKEN=pk.your_public_token_here
 
-To learn more about Next.js, take a look at the following resources:
+# Supabase
+SUPABASE_URL=https://your-project.supabase.co
+SUPABASE_ANON_KEY=your_anon_key_here
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 3. Install Dependencies
+```bash
+npm install
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 4. Set Up Database
+1. Create a Supabase project at [supabase.com](https://supabase.com)
+2. Run the SQL schema in `database.sql` in your Supabase SQL Editor
+3. Get your project URL and anon key from Settings > API
 
-## Deploy on Vercel
+### 5. Run the Application
+```bash
+npm run dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Visit [http://localhost:3000](http://localhost:3000)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🔧 Development
+
+### Database Seeding
+```bash
+npm run seed
+```
+
+### Clean Up Test Data
+```bash
+npm run cleanup-db
+npm run reset-orders
+```
+
+## 🚀 Deployment
+
+### Vercel Deployment
+1. Connect your GitHub repository to Vercel
+2. Add environment variables in Vercel dashboard:
+   - `NEXT_PUBLIC_MAPBOX_TOKEN`
+   - `SUPABASE_URL`
+   - `SUPABASE_ANON_KEY`
+3. Deploy!
+
+### Environment Variables for Production
+Make sure to set these in your deployment platform:
+- **Mapbox**: Use a public token (`pk.*`) for client-side access
+- **Supabase**: Use your project URL and anon key
+
+## 🛡️ Security Best Practices
+
+### For Contributors:
+1. **Never commit `.env.local`** - it's already in `.gitignore`
+2. **Use environment variables** for all sensitive data
+3. **Rotate API keys** regularly
+4. **Use public tokens** for client-side operations
+
+### For Production:
+1. **Set environment variables** in your hosting platform
+2. **Use HTTPS** for all API calls
+3. **Implement proper authentication** (currently using dev login for demo)
+4. **Monitor API usage** to prevent abuse
+
+## 📁 Project Structure
+
+```
+food-route-optimizer/
+├── src/
+│   ├── app/                 # Next.js App Router pages
+│   ├── components/          # React components
+│   ├── contexts/           # React contexts (Auth)
+│   └── lib/                # Utilities (Supabase, Mapbox)
+├── scripts/                # Database scripts
+├── database.sql           # Database schema
+└── env.example            # Environment variables template
+```
+
+## 🔐 Authentication
+
+Currently supports:
+- **Dev Login**: Quick local testing (stored in localStorage)
+- **Supabase Auth**: Email magic link authentication
+
+## 🗺️ Features
+
+- **Customer Flow**: Browse restaurants, order food, track delivery
+- **Owner Dashboard**: View orders, optimize delivery routes
+- **Real-time Updates**: Live order status updates
+- **Route Optimization**: Mapbox-powered delivery route planning
+
+## 📝 License
+
+This project is for educational/demo purposes. Please ensure you have proper licenses for Mapbox and Supabase usage.
+
+---
+
+**⚠️ Remember:** Keep your API keys secure and never share them publicly!

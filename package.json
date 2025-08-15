@@ -6,22 +6,37 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "seed": "tsx scripts/seed.ts",
+    "setup-env": "./scripts/setup-env.sh",
+    "check-env": "node scripts/check-env.js",
+    "test-db": "node scripts/test-connection.js",
+    "test-auth": "node scripts/test-auth.js",
+    "test-owner": "node scripts/test-owner.js",
+    "cleanup": "node scripts/cleanup-db.js",
+    "reset-orders": "node scripts/reset-orders.js"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.55.0",
+    "@tanstack/react-query": "^5.85.0",
+    "@tanstack/react-query-devtools": "^5.85.0",
+    "@types/mapbox-gl": "^3.4.1",
+    "mapbox-gl": "^3.14.0",
+    "next": "15.4.6",
     "react": "19.1.0",
-    "react-dom": "19.1.0",
-    "next": "15.4.6"
+    "react-dom": "19.1.0"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4",
+    "dotenv": "^17.2.1",
     "eslint": "^9",
     "eslint-config-next": "15.4.6",
-    "@eslint/eslintrc": "^3"
+    "tailwindcss": "^4",
+    "tsx": "^4.20.4",
+    "typescript": "^5"
   }
 }
